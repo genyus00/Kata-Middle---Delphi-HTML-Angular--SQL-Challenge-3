@@ -42,6 +42,7 @@ El servidor utiliza dos archivos `.ini` para su parametrización:
   usuario3=clave3
 
 - **DBConex.ini** — Parámetros de conexión a la base de datos SQL Server.
+
 ```ini
   [MSQLServer]
   Server=DESKTOP-4AAQJLB\SQLEXPRESS
@@ -49,7 +50,8 @@ El servidor utiliza dos archivos `.ini` para su parametrización:
   User=sa
   Password=Asdf1234$
 
-**Instrucciones de ejecución**
+
+- **Instrucciones de ejecución**
    - El ejecutable del servidor se llama sa_ServidorApp.exe.
    - Para iniciar el servidor, simplemente haz doble clic en el archivo .exe.
    - Al iniciar, el servidor carga la configuración desde los archivos .ini.
