@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Gestión de Caficultores y Productos</title>
+<style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .tab {
+        overflow: hidden;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        transition: background-color 0.2s;
+        font-size: 16px;
+    }
+    .tab button:hover {
+        background-color: #ddd;
+    }
+    .tab button.active {
+        background-color: #ccc;
+    }
+    .tabcontent {
+        display: none;
+        animation: fadeEffect 0.3s;
+    }
+    @keyframes fadeEffect {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    table, th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background: #f0f0f0; }
+    form { margin-bottom: 20px; }
+    input, select, button { margin: 5px; padding: 8px; }
+</style>
+</head>
+<body>
+
+<h1>Gestión</h1>
+
+<div class="tab">
+  <button class="tablinks active" onclick="openTab(event, 'caficultores')">Caficultores</button>
+  <button class="tablinks" onclick="openTab(event, 'productos')">Productos Cliente</button>
+  <button class="tablinks" onclick="openTab(event, 'abonos')">Abonos Monedero</button>
+  <button class="tablinks" onclick="openTab(event, 'saldo')">Saldo Monedero</button>
+</div>
+
+<!-- Caficultores -->
+<div id="caficultores" class="tabcontent" style="display: block;">
+    <form id="caficultorForm">
+        <input type="hidden" id="caficultorId">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <label for="identificacion">Identificacion:</label>
+        <input type="text" id="identificacion" placeholder="Identificación" required>
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" placeholder="Ciudad" required>
+        <label for="tipo_producto">Tipo Producto:</label>
+        <select id="tipo_producto" required>
+            <option value="" disabled selected>Seleccione tipo de producto</option>
+            <option value="AgroAhorros">AgroAhorros</option>
+            <option value="AgroCorriente">AgroCorriente</option>
+            <option value="AgroDebito">AgroDébito</option>
+        </select>
+        <button type="submit" id="btnGuardar">Guardar</button>
+        <button type="button" id="cancelarCaficultor">Cancelar</button>
+    </form>
+    <table id="caficultoresTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Identificación</th>
+                <th>Ciudad</th>
+                <th>Tipo Producto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- Productos -->
+<div id="productos" class="tabcontent">
+    <form id="productoForm">
+        <input type="hidden" id="productoId">
+        <label for="id_caficultor">Id Caficultor:</label>
+        <input type="number" id="id_caficultor" placeholder="ID Caficultor" required>
+        <label for="tipo_producto_pc">Tipo Producto:</label>
+        <input type="text" id="tipo_producto_pc" placeholder="Tipo Producto" required>
+        <label for="numero_cuenta">No. Cuenta:</label>
+        <input type="text" id="numero_cuenta" placeholder="Número Cuenta" required>
+        <button type="submit" id="btnGuardar_pc">Guardar</button>
+        <button type="button" id="cancelarProducto">Cancelar</button>
+    </form>
+    <div id="buscadorProductos">
+        <h3>Buscar por ID Caficultor</h3>
+        <input type="number" id="buscarCaficultorId_pc" placeholder="ID Caficultor">
+        <button type="button" id="btnBuscar_pc">Buscar</button>
+        <button type="button" id="btnVerTodo_pc">Ver Todos</button>    
+    </div>
+    <table id="productosTable">
+        <thead>
+            <tr>
+                <!--<th>ID</th>-->
+                <th>ID Caficultor</th>
+                <th>Tipo Producto</th>
+                <th>Número Cuenta</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- Abonos -->
+<div id="abonos" class="tabcontent">
+    <form id="abonoForm">
+        <input type="hidden" id="abonoId">
+        <label for="id_caficultor_am">Id Caficultor:</label>
+        <input type="number" id="id_caficultor_am" placeholder="ID Caficultor" required>
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" placeholder="Valor" required>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" placeholder="Fecha" required>
+        <button type="submit" id="btnGuardar_am">Guardar</button>
+        <button type="button" id="cancelarAbono">Cancelar</button>
+    </form>
+    <div id="buscadorAbonos">
+        <h3>Buscar Abonos</h3>
+        <label for="buscarCaficultorId_am">Id Caficultor:</label>
+        <input type="number" id="buscarCaficultorId_am" placeholder="ID Caficultor">
+        <label for="fechaInicio_am">Fecha Inicio:</label>
+        <input type="date" id="fechaInicio_am" placeholder="Fecha inicio">
+        <label for="fechaFin_am">Fecha Fin:</label>
+        <input type="date" id="fechaFin_am" placeholder="Fecha fin">
+        <button type="button" id="btnBuscar_am">Buscar</button>
+        <button type="button" id="btnVerTodo_am">Ver Todos</button>    
+    </div>
+    <table id="abonosTable">
+        <thead>
+            <tr>
+                <!--<th>ID</th>-->
+                <th>ID Caficultor</th>
+                <th>Valor Abono</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- Saldo -->
+<div id="saldo" class="tabcontent">
+    <div id="saldoMonedero">
+        <h3>Buscar por ID Caficultor</h3>
+        <label for="buscarCaficultorId_sm">Id Caficultor:</label>
+        <input type="number" id="buscarCaficultorId_sm" placeholder="ID Caficultor">
+        <button type="button" id="btnBuscar_sm">Buscar</button>
+        <button type="button" id="btnVerTodo_sm">Ver Todos</button>    
+    </div>
+    <table id="saldosTable">
+        <thead>
+            <tr>
+                <!--<th>ID</th>-->
+                <th>ID Caficultor</th>
+                <th>Saldo</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  const tabcontent = document.getElementsByClassName("tabcontent");
+  for (let i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  const tablinks = document.getElementsByClassName("tablinks");
+  for (let i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove("active");
+  }
+
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.classList.add("active");
+}
+</script>
+
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

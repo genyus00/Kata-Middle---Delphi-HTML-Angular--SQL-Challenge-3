@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FC7BFC3D-BBF4-4122-BCEA-051A79E5FF55}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="in_Server\in_ServidorAPI.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="sa_Server\sa_ServidorApp.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="in_ServidorAPI">
+        <MSBuild Projects="in_Server\in_ServidorAPI.dproj"/>
+    </Target>
+    <Target Name="in_ServidorAPI:Clean">
+        <MSBuild Projects="in_Server\in_ServidorAPI.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="in_ServidorAPI:Make">
+        <MSBuild Projects="in_Server\in_ServidorAPI.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="sa_ServidorApp">
+        <MSBuild Projects="sa_Server\sa_ServidorApp.dproj"/>
+    </Target>
+    <Target Name="sa_ServidorApp:Clean">
+        <MSBuild Projects="sa_Server\sa_ServidorApp.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="sa_ServidorApp:Make">
+        <MSBuild Projects="sa_Server\sa_ServidorApp.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="in_ServidorAPI;sa_ServidorApp"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="in_ServidorAPI:Clean;sa_ServidorApp:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="in_ServidorAPI:Make;sa_ServidorApp:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

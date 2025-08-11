@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "83afec68-c3bf-4b4b-97cf-8f6d94b158bc",
+		"name": "Pruebas GetAbonosFiltrados - GET",
+		"description": "Casos de prueba para GetAbonosFiltrados usando método GET en DataSnap REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43574145",
+		"_collection_link": "https://winter-capsule-626693.postman.co/workspace/Registro_Credito_BPM~a2f0e054-910d-4f5f-92c1-c1e10a5154ad/collection/43574145-83afec68-c3bf-4b4b-97cf-8f6d94b158bc?action=share&source=collection_link&creator=43574145"
+	},
+	"item": [
+		{
+			"name": "Solo id_caficultor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetAbonosFiltrados/12//",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"datasnap",
+						"rest",
+						"TServerMethods1",
+						"GetAbonosFiltrados",
+						"12",
+						"",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Solo fechas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetAbonosFiltrados/0/2025-01-01/2025-08-10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"datasnap",
+						"rest",
+						"TServerMethods1",
+						"GetAbonosFiltrados",
+						"0",
+						"2025-01-01",
+						"2025-08-10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sin parámetros (todo vacío)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetAbonosFiltrados/0//",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"datasnap",
+						"rest",
+						"TServerMethods1",
+						"GetAbonosFiltrados",
+						"0",
+						"",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "010577",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "genyus00",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

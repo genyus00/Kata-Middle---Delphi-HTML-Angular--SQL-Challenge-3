@@ -1,0 +1,539 @@
+{
+	"info": {
+		"_postman_id": "def9b550-c08b-4d89-8ab9-1caa527d836e",
+		"name": "DataSnap - TServerMethods1 API (Auth)",
+		"description": "Colección completa para probar todos los métodos de TServerMethods1 en DataSnap con Basic Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43574145",
+		"_collection_link": "https://winter-capsule-626693.postman.co/workspace/Registro_Credito_BPM~a2f0e054-910d-4f5f-92c1-c1e10a5154ad/collection/43574145-def9b550-c08b-4d89-8ab9-1caa527d836e?action=share&source=collection_link&creator=43574145"
+	},
+	"item": [
+		{
+			"name": "CAFICULTORES",
+			"item": [
+				{
+					"name": "Crear Caficultor (POST)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"identificacion\": \"123456789\",\n  \"ciudad\": \"Manizales\",\n  \"tipo_producto\": \"Café\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/Caficultor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"Caficultor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Caficultores (GET)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetCaficultores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"GetCaficultores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Caficultor por ID (GET)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetCaficultorById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"GetCaficultorById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Caficultor (PUT)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan Actualizado\",\n  \"identificacion\": \"987654321\",\n  \"ciudad\": \"Armenia\",\n  \"tipo_producto\": \"Café Especial\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/Caficultor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"Caficultor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Caficultor (DELETE)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/Caficultor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"Caficultor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ABONOS_MONEDERO",
+			"item": [
+				{
+					"name": "Crear Abono (POST)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id_caficultor\": 3,\n  \"valor\": 5800,\n  \"fecha\": \"2025-08-09T10:00:00+09:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/AbonoMonedero",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"AbonoMonedero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Abonos (GET)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetAbonosMonedero",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"GetAbonosMonedero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Abono por ID (GET)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetAbonoMonederoById/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"GetAbonoMonederoById",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Abono (PUT)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id_caficultor\": 2,\n  \"valor\": 60000,\n  \"fecha\": \"2025-08-09T12:00:00+09:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/AbonoMonedero/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"AbonoMonedero",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Abono (DELETE)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/AbonoMonedero/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"AbonoMonedero",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUCTOS_CLIENTE",
+			"item": [
+				{
+					"name": "Crear Producto Cliente (POST)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id_caficultor\": 5,\n  \"tipo_producto\": \"Cuenta  1\",\n  \"numero_cuenta\": \"12347890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/ProductoCliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"ProductoCliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Productos Cliente (GET)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetProductosCliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"GetProductosCliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Producto Cliente por ID (GET)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetProductoClienteById/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"GetProductoClienteById",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Producto Cliente (PUT)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id_caficultor\": 2,\n  \"tipo_producto\": \"Cuenta Ahorro\",\n  \"numero_cuenta\": \"9876543210\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/ProductoCliente/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"ProductoCliente",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Producto Cliente (DELETE)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/ProductoCliente/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"ProductoCliente",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PROCEDIMIENTOS",
+			"item": [
+				{
+					"name": "SP Saldo Monedero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetSaldoMonedero/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"GetSaldoMonedero",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SP Productos Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/GetPProductosClienteById/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"GetPProductosClienteById",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SP Crear Abono",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_caficultor\": 3,\r\n  \"valor\": 5800,\r\n  \"fecha\": \"2025-08-09T10:00:00+09:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/RegistrarAbono",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"datasnap",
+								"rest",
+								"TServerMethods1",
+								"RegistrarAbono"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TestConnection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/datasnap/rest/TServerMethods1/TestConnection",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"datasnap",
+						"rest",
+						"TServerMethods1",
+						"TestConnection"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "genyus00",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "010577",
+				"type": "string"
+			}
+		]
+	}
+}
