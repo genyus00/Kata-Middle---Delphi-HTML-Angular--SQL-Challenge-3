@@ -45,8 +45,11 @@ El servidor utiliza dos archivos `.ini` para su parametrización:
 
 [MSQLServer]
 Server=DESKTOP-4AAQJLB\SQLEXPRESS
+
 DataBase=DBKATA
+
 User=sa
+
 Password=Asdf1234$
 
 **Instrucciones de ejecución**
@@ -75,6 +78,7 @@ Para facilitar las pruebas de los métodos expuestos por el servidor, se incluye
 - Navegador web moderno (Chrome, Firefox, Edge).
 
 **Pasos**
+
 **1.** Abre el archivo index.html directamente en el navegador.
 
 **2.** Asegúrate de que el backend esté corriendo para que las llamadas a la API funcionen correctamente.
