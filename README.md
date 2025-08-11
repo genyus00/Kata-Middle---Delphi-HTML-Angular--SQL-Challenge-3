@@ -63,7 +63,7 @@ El servidor expone los métodos API para ser consumidos desde el frontend o herr
 Nota adicional
 El backend también cuenta con una versión en .dll para desplegar en IIS, que no forma parte de esta guía de ejecución.
 
-3. Pruebas de API con Postman
+## 3. Pruebas de API con Postman
 Para facilitar las pruebas de los métodos expuestos por el servidor, se incluyen colecciones Postman dentro de la carpeta json:
 
 DataSnap - TServerMethods1 API (Auth).postman_collection v2.json
@@ -74,7 +74,7 @@ Colección para probar específicamente la consulta de abonos filtrados por par�
 
 Importa estas colecciones en Postman para ejecutar y verificar los endpoints.
 
-4. Frontend (HTML + JavaScript)
+## 4. Frontend (HTML + JavaScript)
 Requisitos
 Navegador web moderno (Chrome, Firefox, Edge).
 
