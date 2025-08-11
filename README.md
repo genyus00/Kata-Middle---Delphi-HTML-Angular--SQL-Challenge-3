@@ -1,5 +1,14 @@
 # Kata-Middle---Delphi-HTML-Angular--SQL-Challenge-3
-Reto Fullstack Escalable Externo
+- Reto Fullstack Escalable Externo
+- Registrar caficultores con: nombre, identificación, ciudad y tipo de producto.
+- Registrar abonos a monedero con validaciones básicas.
+- Consultar saldo del monedero por caficultor.
+- Mostrar productos bancarios asociados.
+- Visualizar tablas con abonos y caficultores.
+- Filtros por fechas para abonos.
+- CRUD básico para todas las entidades.
+- Uso de procedimientos almacenados para registrar abonos, consultar saldos y consultar productos.
+- Separación frontend (HTML+JS) y backend (Delphi + BD).
 
 # README Técnico - Instrucciones Básicas de Ejecución
 
