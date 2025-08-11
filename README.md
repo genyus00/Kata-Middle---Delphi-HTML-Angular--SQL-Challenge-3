@@ -37,5 +37,52 @@ El servidor utiliza dos archivos `.ini` para su parametrización:
 
   ```ini
   [Users]
-  genyus00=010577
-  otroUsuario=suClave
+  usuario1=clave1
+  usuario2=clave2
+  usuario3=clave3
+
+- **DBConex.ini** — Parámetros de conexión a la base de datos SQL Server.
+
+[MSQLServer]
+Server=DESKTOP-4AAQJLB\SQLEXPRESS
+DataBase=DBKATA
+User=sa
+Password=Asdf1234$
+
+Instrucciones de ejecución
+El ejecutable del servidor se llama sa_ServidorApp.exe.
+
+Para iniciar el servidor, simplemente haz doble clic en el archivo .exe.
+
+Al iniciar, el servidor carga la configuración desde los archivos .ini.
+
+Desde ese momento, podrás iniciar o detener el servidor según sea necesario.
+
+El servidor expone los métodos API para ser consumidos desde el frontend o herramientas externas.
+
+Nota adicional
+El backend también cuenta con una versión en .dll para desplegar en IIS, que no forma parte de esta guía de ejecución.
+
+3. Pruebas de API con Postman
+Para facilitar las pruebas de los métodos expuestos por el servidor, se incluyen colecciones Postman dentro de la carpeta json:
+
+DataSnap - TServerMethods1 API (Auth).postman_collection v2.json
+Colección para probar métodos relacionados con autenticación y funcionalidades principales.
+
+Pruebas GetAbonosFiltrados - GET.postman_collection.json
+Colección para probar específicamente la consulta de abonos filtrados por parámetros.
+
+Importa estas colecciones en Postman para ejecutar y verificar los endpoints.
+
+4. Frontend (HTML + JavaScript)
+Requisitos
+Navegador web moderno (Chrome, Firefox, Edge).
+
+Pasos
+Abre el archivo index.html directamente en el navegador.
+
+Asegúrate de que el backend esté corriendo para que las llamadas a la API funcionen correctamente.
+
+El frontend realiza llamadas AJAX hacia el servidor para mostrar datos y realizar operaciones.
+
+Si tienes dudas o problemas durante la ejecución, consulta los logs del backend o la consola del navegador para identificar errores.
