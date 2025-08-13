@@ -12,11 +12,11 @@ unit UFunciones;
 interface
 
 uses
-  IniFiles,SysUtils,
+  IniFiles,SysUtils, System.Classes, System.SyncObjs,
   FireDAC.Comp.Client, FireDAC.Stan.Def, FireDAC.Stan.Async,
   FireDAC.DApt, FireDAC.Stan.Param,
   FireDAC.Phys, FireDAC.Phys.MSSQL, FireDAC.Phys.MSSQLDef,
-  FireDAC.UI.Intf, FireDAC.VCLUI.Wait, System.Classes,
+  FireDAC.UI.Intf, FireDAC.VCLUI.Wait,
   Windows, PsAPI, DateUtils, System.JSON;
 
 const
@@ -45,7 +45,6 @@ function ISO8601TokyoToDateTime(const AISODateTime: string): TDateTime;
 //2. Funciones para tratamiento y formateo de cadenas y arreglos
 function QuitaEn(Cadena, Esto: string): string;
 function CambiaEn(Cadena, Esto, Por: string): string;
-procedure LogDebug(const Msg: string);
 function ExtraerMensajeSQL(const AMsg: string): string;
 function ManejarErroresDB(const E: Exception; const Accion: string): TJSONObject;
 function BuildResponse(CodError: Integer; const Msg: string; Data: TJSONValue = nil): TJSONObject;
@@ -60,7 +59,7 @@ var
 implementation
 
 uses
-  Variants, FireDAC.Stan.Error;
+  Variants, FireDAC.Stan.Error, ULog;
 
 function GetDllName: string;
 var
@@ -145,11 +144,6 @@ begin
   Result := Result + Cadena;
 end;
 
-procedure LogDebug(const Msg: string);
-begin
-  OutputDebugString(PWideChar(Msg));
-end;
-
 function ExtraerMensajeSQL(const AMsg: string): string;
 var
   PosSQL: Integer;
@@ -202,8 +196,6 @@ begin
   // Mensaje genérico si no coincidió ningún patrón
   Exit(BuildResponse(999, 'Error en operación ' + Accion + ': ' + ExtraerMensajeSQL(E.Message)));
 end;
-
-
 
 function BuildResponse(CodError: Integer; const Msg: string; Data: TJSONValue = nil): TJSONObject;
 begin

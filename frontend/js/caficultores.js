@@ -1,5 +1,5 @@
 // caficultores.js
-import { apiRequest, cancelarFormulario } from './utils.js';
+import { apiRequest, cancelarFormulario, manejarError } from './utils.js';
 
 // ===== CRUD CAFICULTORES =====
 export async function cargarCaficultores() {
@@ -7,7 +7,10 @@ export async function cargarCaficultores() {
     const tbody = document.querySelector("#caficultoresTable tbody");
     tbody.innerHTML = "";
 
-    if (result.CodError === 0 && Array.isArray(result.data)) {
+    if (manejarError(result)) return;
+
+    // Si no hay error, procesamos normalmente
+    if (Array.isArray(result.data)) {
         result.data.forEach(c => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
@@ -31,8 +34,6 @@ export async function cargarCaficultores() {
 
             tbody.appendChild(tr);
         });
-    } else {
-        alert(result.ErrorMsg || "Error al cargar caficultores");
     }
 }
 
@@ -47,14 +48,19 @@ export function editarCaficultor(id, nombre, identificacion, ciudad, tipo_produc
 
 export async function eliminarCaficultor(id) {
     if (!confirm("¿Eliminar este caficultor?")) return;
+
     const result = await apiRequest(`/caficultor/${id}`, "DELETE");
-    alert(result.message || result.ErrorMsg || "Operación completada");
+    
+    if (manejarError(result)) return;
+
+    alert(result.message || "Operación completada");
     cargarCaficultores();
 }
 
 export function attachCaficultorEvents() {
     document.getElementById("caficultorForm").addEventListener("submit", async function(e) {
         e.preventDefault();
+
         const id = parseInt(document.getElementById("caficultorId").value, 10) || 0; // 0 si vacío
         const data = {
             nombre: document.getElementById("nombre").value,
@@ -67,7 +73,9 @@ export function attachCaficultorEvents() {
         const method = id > 0 ? "PUT" : "POST";
         const result = await apiRequest(endpoint, method, data);
 
-        alert(result.message || result.ErrorMsg || "Operación completada");
+        if (manejarError(result)) return;       
+        
+        alert(result.message || "Operación completada");
         cargarCaficultores();
         cancelarFormulario("caficultorForm");
     });

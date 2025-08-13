@@ -20,6 +20,7 @@ type
     btnStart: TButton;
     btnStop: TButton;
     btnOpenBrowser: TButton;
+    mmlog: TMemo;
     procedure FormCreate(Sender: TObject);
     procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
 
@@ -44,7 +45,7 @@ implementation
 {$R *.dfm}
 
 uses
-  WinApi.Windows, Winapi.ShellApi, Datasnap.DSSession, uDBGlobal, UFunciones;
+  WinApi.Windows, Winapi.ShellApi, Datasnap.DSSession, uDBGlobal, UFunciones, ULog;
 
 procedure TForm1.ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
 begin
@@ -165,11 +166,30 @@ begin
 end;
 
 procedure TForm1.TmrRelojTimer(Sender: TObject);
+var
+  i: Integer;
+  NewLines: TStringList;
 begin
   if Self = nil then
     TmrReloj.Enabled := false;
 
   StbEstado.Panels[3].Text := formatdatetime('HH:mm:ss', time);
+
+  // === Actualizar Memo con las nuevas entradas del log ===
+  NewLines := TStringList.Create;
+  try
+    GetLogContent(NewLines); // función de ULog que devuelve el log actual
+
+    // Agregar solo las líneas nuevas
+    for i := mmlog.Lines.Count to NewLines.Count - 1 do
+      mmlog.Lines.Add(NewLines[i]);
+
+    // Opcional: scrollear al final
+    if mmlog.Lines.Count > 0 then
+      mmlog.SelStart := Length(mmlog.Text);
+  finally
+    NewLines.Free;
+  end;
 end;
 
 end.

@@ -120,6 +120,7 @@
         </DCCReference>
         <DCCReference Include="..\UComunes\uDBGlobal.pas"/>
         <DCCReference Include="..\UComunes\UFunciones.pas"/>
+        <DCCReference Include="..\UComunes\ULog.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

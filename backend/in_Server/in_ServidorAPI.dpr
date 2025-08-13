@@ -12,7 +12,8 @@ uses
   ServerContainerUnit1 in '..\ServerContainerUnit1.pas' {ServerContainer1: TDataModule},
   WebModuleUnit1 in '..\WebModuleUnit1.pas' {WebModule1: TWebModule},
   uDBGlobal in '..\UComunes\uDBGlobal.pas',
-  UFunciones in '..\UComunes\UFunciones.pas';
+  UFunciones in '..\UComunes\UFunciones.pas',
+  ULog in '..\UComunes\ULog.pas';
 
 {$R *.res}
 

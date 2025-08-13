@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 271
   Top = 114
   Caption = 'Servidor REST WebBroker'
-  ClientHeight = 105
-  ClientWidth = 500
+  ClientHeight = 531
+  ClientWidth = 479
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,17 +13,20 @@ object Form1: TForm1
   OldCreateOrder = False
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  DesignSize = (
+    479
+    531)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 15
+    Left = 9
     Top = 22
     Width = 20
     Height = 13
     Caption = 'Port'
   end
   object EditPort: TEdit
-    Left = 41
+    Left = 35
     Top = 18
     Width = 74
     Height = 21
@@ -32,8 +35,8 @@ object Form1: TForm1
   end
   object Pnl_1: TPanel
     Left = 0
-    Top = 78
-    Width = 500
+    Top = 504
+    Width = 479
     Height = 27
     Align = alBottom
     BevelOuter = bvNone
@@ -48,14 +51,15 @@ object Form1: TForm1
     ParentCtl3D = False
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 105
+    ExplicitTop = 78
+    ExplicitWidth = 500
     DesignSize = (
-      500
+      479
       27)
     object Img_StatusBar: TImage
       Left = 0
       Top = 0
-      Width = 500
+      Width = 479
       Height = 27
       Align = alClient
       Picture.Data = {
@@ -3486,9 +3490,9 @@ object Form1: TForm1
       ExplicitWidth = 1366
     end
     object StbEstado: TStatusBar
-      Left = 16
+      Left = 5
       Top = 3
-      Width = 476
+      Width = 469
       Height = 20
       Align = alNone
       Anchors = [akLeft, akTop, akRight, akBottom]
@@ -3513,10 +3517,11 @@ object Form1: TForm1
           Text = '00:00'
           Width = 70
         end>
+      ExplicitWidth = 695
     end
   end
   object btnStart: TButton
-    Left = 128
+    Left = 122
     Top = 16
     Width = 75
     Height = 25
@@ -3525,7 +3530,7 @@ object Form1: TForm1
     OnClick = btnStartClick
   end
   object btnStop: TButton
-    Left = 209
+    Left = 203
     Top = 16
     Width = 75
     Height = 25
@@ -3534,7 +3539,7 @@ object Form1: TForm1
     OnClick = btnStopClick
   end
   object btnOpenBrowser: TButton
-    Left = 16
+    Left = 10
     Top = 47
     Width = 268
     Height = 25
@@ -3542,14 +3547,25 @@ object Form1: TForm1
     TabOrder = 4
     OnClick = btnOpenBrowserClick
   end
+  object mmlog: TMemo
+    Left = 12
+    Top = 78
+    Width = 455
+    Height = 420
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Lines.Strings = (
+      'mmlog')
+    TabOrder = 5
+    ExplicitWidth = 681
+  end
   object ApplicationEvents1: TApplicationEvents
     OnIdle = ApplicationEvents1Idle
-    Left = 344
+    Left = 338
   end
   object TmrReloj: TTimer
     Enabled = False
     OnTimer = TmrRelojTimer
-    Left = 346
+    Left = 340
     Top = 51
   end
 end

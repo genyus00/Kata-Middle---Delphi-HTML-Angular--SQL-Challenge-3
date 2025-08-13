@@ -48,7 +48,7 @@ uses
   FireDAC.Stan.Param,
   Datasnap.DSCommonServer,   // Para GetInvocationMetaData
   Datasnap.DSHTTPCommon,     // Para TDSHTTPRequest
-  uDBGlobal, UFunciones, System.Variants, FireDAC.Stan.Error;
+  uDBGlobal, UFunciones, System.Variants, FireDAC.Stan.Error, ULog;
 
 { TServerMethods1 }
 function TServerMethods1.TestConnection: TJSONObject;

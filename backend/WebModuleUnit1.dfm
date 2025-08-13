@@ -9,9 +9,14 @@ object WebModule1: TWebModule1
       OnAction = WebModuleDefaultHandlerAction
     end
     item
-      Name = 'WebActionItem1'
+      Name = 'Ahello'
       PathInfo = '/hello'
       OnAction = WebModuleWebActionItem1Action
+    end
+    item
+      Name = 'AGetLog'
+      PathInfo = '/GetLog'
+      OnAction = WebModule1AGetLogAction
     end>
   BeforeDispatch = WebModuleBeforeDispatch
   Height = 326

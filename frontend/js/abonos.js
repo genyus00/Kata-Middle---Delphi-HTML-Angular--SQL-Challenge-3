@@ -1,5 +1,5 @@
 // abonos.js
-import { apiRequest, cancelarFormulario } from './utils.js';
+import { apiRequest, cancelarFormulario, manejarError } from './utils.js';
 
 // ===== CRUD ABONOS MONEDEROS =====
 // Función para cargar todos los abonos al iniciar o refrescar
@@ -8,6 +8,9 @@ export async function cargarAbonos() {
     document.getElementById("fechaInicio_am").value = "";
     document.getElementById("fechaFin_am").value = "";
     const result = await apiRequest("/GetAbonosMonedero");
+    
+    if (manejarError(result)) return;
+
     renderAbonos(result);
 }
 
@@ -25,7 +28,10 @@ export function editarAbono(id, valor, fecha, id_caficultor) {
 export async function eliminarAbono(id) {
     if (!confirm("¿Eliminar este abono?")) return;
     const result = await apiRequest(`/AbonoMonedero/${id}`, "DELETE");
-    alert(result.message || result.ErrorMsg || "Operación completada");
+
+    if (manejarError(result)) return;     
+    
+    alert(result.message || "Operación completada");
     cargarAbonos();
 }
 
@@ -45,6 +51,9 @@ export async function buscarAbonos() {
     const url = `/GetAbonosFiltrados/${encodeURIComponent(id)}/${encodeURIComponent(inicio)}/${encodeURIComponent(fin)}`;
 
     const result = await apiRequest(url);
+
+    if (manejarError(result)) return;
+
     renderAbonos(result);
 }
 
@@ -53,7 +62,7 @@ function renderAbonos(result) {
     const tbody = document.querySelector("#abonosTable tbody");
     tbody.innerHTML = "";
 
-    if (result.CodError === 0 && Array.isArray(result.data)) {
+    if (Array.isArray(result.data) && result.data.length > 0) {
         result.data.forEach(p => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
@@ -76,7 +85,7 @@ function renderAbonos(result) {
             
         });
     } else {
-        alert(result.ErrorMsg || "No se encontraron abonos para ese caficultor");
+        alert("No se encontraron abonos para ese caficultor");
     }
 }
 
@@ -94,7 +103,10 @@ export function attachAbonosEvents() {
         const method = id > 0 ? "PUT" : "POST";
         const result = await apiRequest(endpoint, method, data);
 
-        alert(result.message || result.ErrorMsg || "Operación completada");
+        if (manejarError(result)) return; 
+        
+        alert(result.message || "Operación completada");
+
         cargarAbonos();
         cancelarFormulario("abonoForm");
     });

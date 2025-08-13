@@ -1,10 +1,13 @@
 // saldos.js
-import { apiRequest } from './utils.js';
+import { apiRequest, manejarError } from './utils.js';
 
 // ===== CONSULTA SALDOS CAFICULTOR =====
 export async function cargarSaldos() {
     document.getElementById("buscarCaficultorId_sm").value = "";
     const result = await apiRequest("/GetSaldoMonedero/0");
+
+    if (manejarError(result)) return;
+
     renderSaldos(result);
 }
 
@@ -16,19 +19,18 @@ export async function buscarSaldo() {
         return;
     }
 
-    try {
-        const result = await apiRequest(`/GetSaldoMonedero/${idCaficultor}`);
-        renderSaldos(result);
-    } catch (error) {
-        alert("Error al buscar saldo: " + error.message);
-    }
+    const result = await apiRequest(`/GetSaldoMonedero/${idCaficultor}`);
+    
+    if (manejarError(result)) return;
+
+    renderSaldos(result);
 }
 
 function renderSaldos(result) {
     const tbody = document.querySelector("#saldosTable tbody");
     tbody.innerHTML = "";
 
-    if (result.CodError === 0 && Array.isArray(result.data)) {
+    if (Array.isArray(result.data) && result.data.length > 0) {
         result.data.forEach(s => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
@@ -38,7 +40,7 @@ function renderSaldos(result) {
             tbody.appendChild(tr);
         });
     } else {
-        alert(result.ErrorMsg || "No se encontraron saldos.");
+        alert("No se encontraron saldos.");
     }
 }
 

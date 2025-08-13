@@ -1,10 +1,13 @@
 // productos.js
-import { apiRequest, cancelarFormulario } from './utils.js';
+import { apiRequest, cancelarFormulario, manejarError } from './utils.js';
 
 // ===== CRUD PRODUCTOS =====
 export async function cargarProductos() {
     document.getElementById("buscarCaficultorId_pc").value = "";
     const result = await apiRequest("/GetProductosCliente");
+    
+    if (manejarError(result)) return;
+    
     renderProductos(result);
 }
 
@@ -19,7 +22,10 @@ export function editarProducto(id, tipo_producto, numero_cuenta, id_caficultor) 
 export async function eliminarProducto(id) {
     if (!confirm("¿Eliminar este producto?")) return;
     const result = await apiRequest(`/productocliente/${id}`, "DELETE");
-    alert(result.message || result.ErrorMsg || "Operación completada");
+
+    if (manejarError(result)) return;
+
+    alert(result.message || "Operación completada");
     cargarProductos();
 }
 
@@ -32,6 +38,9 @@ export async function buscarProducto() {
     }
 
     const result = await apiRequest(`/GetProductosByCaficultor/${idCaficultor}`);
+    
+    if (manejarError(result)) return;
+    
     renderProductos(result);
 }
 
@@ -39,7 +48,7 @@ function renderProductos(result) {
     const tbody = document.querySelector("#productosTable tbody");
     tbody.innerHTML = "";
 
-    if (result.CodError === 0 && Array.isArray(result.data)) {
+    if (Array.isArray(result.data) && result.data.length > 0) {
         result.data.forEach(p => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
@@ -63,7 +72,7 @@ function renderProductos(result) {
             tbody.appendChild(tr);
         });
     } else {
-        alert(result.ErrorMsg || "No se encontraron productos para ese caficultor");
+        alert("No se encontraron productos para ese caficultor");
     }
 }
 
@@ -81,7 +90,9 @@ export function attachProductoEvents() {
         const method = id > 0 ? "PUT" : "POST";
         const result = await apiRequest(endpoint, method, data);
 
-        alert(result.message || result.ErrorMsg || "Operación completada");
+        if (manejarError(result)) return;
+
+        alert(result.message || "Operación completada");
         cargarProductos();
         cancelarFormulario("productoForm");    
     });

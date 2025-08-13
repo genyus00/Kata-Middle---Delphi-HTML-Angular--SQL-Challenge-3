@@ -21,6 +21,8 @@ type
     procedure WebModuleWebActionItem1Action(Sender: TObject;Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
     procedure WebModuleBeforeDispatch(Sender: TObject; Request: TWebRequest;
       Response: TWebResponse; var Handled: Boolean);
+    procedure WebModule1AGetLogAction(Sender: TObject; Request: TWebRequest;
+      Response: TWebResponse; var Handled: Boolean);
 
   private
     { Private declarations }
@@ -39,7 +41,7 @@ implementation
 {$R *.dfm}
 
 uses
-   ServerMethodsUnit1, Web.WebReq, UFunciones, ServerContainerUnit1;
+   ServerMethodsUnit1, Web.WebReq, UFunciones, ServerContainerUnit1, ULog;
 
 function TWebModule1.TColorToHex(Color: TColor): string;
 begin
@@ -105,6 +107,14 @@ procedure TWebModule1.WebModuleWebActionItem1Action(Sender: TObject;
 begin
   Response.Content := '{"mensaje": "Hola mundo REST"}';
   Response.ContentType := 'application/json';
+  Handled := True;
+end;
+
+procedure TWebModule1.WebModule1AGetLogAction(Sender: TObject;
+  Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
+begin
+  Response.ContentType := 'text/plain; charset=utf-8';
+  Response.Content := GetLogText;
   Handled := True;
 end;
 

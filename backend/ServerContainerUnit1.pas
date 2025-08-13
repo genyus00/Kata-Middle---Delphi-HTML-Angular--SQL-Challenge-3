@@ -37,7 +37,7 @@ implementation
 {$R *.dfm}
 
 uses
-  ServerMethodsUnit1, UFunciones;
+  ServerMethodsUnit1, UFunciones, ULog;
 
 var
   FModule: TComponent;
